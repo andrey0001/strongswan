@@ -21,4 +21,5 @@ You could add additional users to file /etc/ipsec.conf , the reload secrets by:
 ```
 strongswan rereadsecrets
 ```
+inside the container
 
