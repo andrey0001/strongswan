@@ -25,7 +25,7 @@ VPN_PSK = preshared key (default:s3cr3tk3y)
 VPN_SUBNET = network (default:192.168.95.0/24)
 #
 
-You could add additional users to the file /etc/ipsec.conf , then reload secrets by: 
+You could add additional users to the file /etc/strongswan/ipsec.conf , then reload secrets by: 
 ```
 strongswan rereadsecrets
 ```
