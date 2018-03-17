@@ -1,6 +1,6 @@
-## StrongSwan as a Docker container
+### StrongSwan as a Docker container
 
-# IPSec XAUTH ikev1 VPN server
+## IPSec XAUTH ikev1 VPN server
 
 Just build it or pull it from andrey0001/strongswan and run it something like this:
 
@@ -16,13 +16,10 @@ docker run -t -d --privileged \
 --name strongswan andrey0001/strongswan
 ```
 
-> VPN_USER = username (default:user1)
-
-> VPN_PASS = password (default:Sup3rS3cr3t)
-
-> VPN_PSK = preshared key (default:s3cr3tk3y)
-
-> VPN_SUBNET = network (default:192.168.95.0/24)
+* VPN_USER = username (default:user1)
+* VPN_PASS = password (default:Sup3rS3cr3t)
+* VPN_PSK = preshared key (default:s3cr3tk3y)
+* VPN_SUBNET = network (default:192.168.95.0/24)
 #
 
 You could add additional users to the file /etc/strongswan/ipsec.secrets , then reload secrets by: 
