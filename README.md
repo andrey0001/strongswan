@@ -17,8 +17,11 @@ docker run -t -d --privileged \
 ```
 
 > VPN_USER = username (default:user1)
+
 > VPN_PASS = password (default:Sup3rS3cr3t)
+
 > VPN_PSK = preshared key (default:s3cr3tk3y)
+
 > VPN_SUBNET = network (default:192.168.95.0/24)
 #
 
