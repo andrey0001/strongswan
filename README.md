@@ -26,5 +26,5 @@ You could add additional users to the file /etc/strongswan/ipsec.secrets , then 
 ```
 strongswan rereadsecrets
 ```
-inside the container
+inside the container.
 
