@@ -10,17 +10,18 @@
 		/usr/bin/touch /firsttime	
 	fi
 
-/usr/sbin/strongswan start --nofork &
-/bin/sleep 30
-/sbin/iptables -t nat -A POSTROUTING -s $VPN_SUBNET -j MASQUERADE
 /sbin/sysctl -w net.ipv4.ip_forward=1
 /sbin/sysctl -w net.ipv4.conf.all.rp_filter=2
 
-#	for each in /proc/sys/net/ipv4/conf/*
-#	do
-#		/usr/bin/echo 0 > $each/accept_redirects
-#		/usr/bin/echo 0 > $each/send_redirects
-#	done
+	for each in /proc/sys/net/ipv4/conf/*
+	do
+		/usr/bin/echo 0 > $each/accept_redirects
+		/usr/bin/echo 0 > $each/send_redirects
+	done
+
+/usr/sbin/strongswan start --nofork &
+/bin/sleep 30
+/sbin/iptables -t nat -A POSTROUTING -s $VPN_SUBNET -j MASQUERADE
 
 [ "$1" ] && exec "$@"
 
