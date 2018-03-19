@@ -11,7 +11,7 @@
 	fi
 
 /usr/sbin/strongswan start --nofork &
-/bin/sleep 20
+/bin/sleep 30
 /sbin/iptables -t nat -A POSTROUTING -s $VPN_SUBNET -j MASQUERADE
 /sbin/sysctl -w net.ipv4.ip_forward=1
 
