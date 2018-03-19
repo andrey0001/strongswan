@@ -2,6 +2,7 @@
 
 /usr/bin/echo >/var/log/ipsec.log
 /usr/bin/rm -f /var/run/charon.pid
+/usr/bin/rm -f /var/run/starter.charon.pid
 
 	if [ ! -f "/firsttime" ]; then
 		/bin/sed -i -e "s:rightsourceip=192.168.95.0/24:rightsourceip=$VPN_SUBNET:g" /etc/strongswan/ipsec.conf
@@ -20,7 +21,7 @@
 	done
 
 /usr/sbin/strongswan start --nofork &
-/bin/sleep 30
+/bin/sleep 25
 /sbin/iptables -t nat -A POSTROUTING -s $VPN_SUBNET -j MASQUERADE
 
 [ "$1" ] && exec "$@"
