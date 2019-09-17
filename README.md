@@ -28,3 +28,15 @@ strongswan rereadsecrets
 ```
 inside the container.
 
+Also, you could use volume (bind mount a volume) for configuration files of strongswan (to store it on host):
+```
+-v /etc/strongswan:/etc/strongswan 
+```
+and reread secrets from host:
+```
+docker exec -it strongswan /usr/sbin/strongswan rereadsecrets
+```
+and reread configuration
+```
+docker exec -it strongswan /usr/sbin/strongswan update
+```
