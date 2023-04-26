@@ -1,15 +1,13 @@
-FROM centos:centos8
+FROM alpine:3.17
 
 MAINTAINER Andrey Sorokin <andrey@sorokin.org>
 
-RUN 	/usr/bin/yum -y update &&\
-	/usr/bin/yum -y install epel-release &&\ 
-	/usr/bin/yum -y install strongswan strongswan-libipsec iptables
+RUN apk add --no-cache bash strongswan iptables
 
 ADD start.sh /start.sh
-ADD ipsec.conf /etc/strongswan/ipsec.conf
-ADD ipsec.secrets /etc/strongswan/ipsec.secrets
-ADD strongswan.conf /etc/strongswan/strongswan.conf
+ADD ipsec.conf /etc/ipsec.conf
+ADD ipsec.secrets /etc/ipsec.secrets
+ADD strongswan.conf /etc/strongswan.conf
 
 ENV VPN_SUBNET 192.168.95.0/24
 ENV VPN_USER user1

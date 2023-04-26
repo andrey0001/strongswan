@@ -22,21 +22,9 @@ docker run -t -d --privileged \
 * VPN_SUBNET = network (default:192.168.95.0/24)
 #
 
-You could add additional users to the file /etc/strongswan/ipsec.secrets , then reload secrets by: 
+You could add additional users to the file /etc/ipsec.secrets , then reload secrets by: 
 ```
-strongswan rereadsecrets
+ipsec rereadsecrets
 ```
 inside the container.
 
-Also, you could use volume (bind mount a volume) for configuration files of strongswan (to store it on host):
-```
--v /etc/strongswan:/etc/strongswan 
-```
-and reread secrets from host:
-```
-docker exec -it strongswan /usr/sbin/strongswan rereadsecrets
-```
-and reread configuration
-```
-docker exec -it strongswan /usr/sbin/strongswan update
-```
