@@ -2,8 +2,10 @@ FROM centos:centos8
 
 MAINTAINER Andrey Sorokin <andrey@sorokin.org>
 
+RUN	/usr/bin/sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN	/usr/bin/sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 RUN 	/usr/bin/yum -y update &&\
-	/usr/bin/yum -y install epel-release &&\ 
+	/usr/bin/yum -y install epel-release &&\
 	/usr/bin/yum -y install strongswan strongswan-libipsec iptables
 
 ADD start.sh /start.sh
