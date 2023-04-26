@@ -1,5 +1,10 @@
 ### StrongSwan as a Docker container
 
+> Latest image based on alpine, please use andrey0001/strongswan:alpine for it.
+
+> On alpine image path of config inside container changed.
+
+
 ## IPSec XAUTH ikev1 VPN server
 
 Just build it or pull it from andrey0001/strongswan and run it something like this:
