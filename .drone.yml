@@ -1,0 +1,46 @@
+---
+kind: pipeline
+type: ssh
+name: create-docker-images
+
+server:
+  host: 192.168.72.8:2022
+  user: root
+  ssh_key:
+    from_secret: ssh_key_umac
+
+steps:
+- name: git_login
+  environment:
+    USERNAME:
+      from_secret: docker_username
+    PASSWORD:
+      from_secret: docker_password
+  commands:
+  - echo $PASSWORD | docker login -u $USERNAME --password-stdin
+  - docker buildx create --name multiarch1 --driver docker-container --use
+  when:
+    event:
+    - promote
+
+- name: build_test_centos
+  commands:
+  - docker build --tag andrey0001/strongswan:centos .
+  - docker rmi andrey0001/strongswan:centos
+  when:
+    branch:
+    - centos
+
+- name: build_and_push_centos
+  commands:
+    - docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag andrey0001/strongswan:centos .
+  when:
+    branch:
+    - centos
+    event:
+    - promote
+
+node:
+  instance: umac
+  type: ssh
+
