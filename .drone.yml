@@ -4,8 +4,10 @@ type: ssh
 name: create-docker-images
 
 server:
-  host: 192.168.72.8:2022
-  user: root
+  host:
+    from_secret: server_host_umac
+  user:
+    from_secret: server_host_umac_user
   ssh_key:
     from_secret: ssh_key_umac
 
