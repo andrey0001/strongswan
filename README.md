@@ -13,7 +13,7 @@ docker run -t -d --privileged \
 --publish 4500:4500/udp \
 --publish 500:500/udp \
 --hostname strongswan \
---name strongswan andrey0001/strongswan
+--name strongswan andrey0001/strongswan:centos
 ```
 
 * VPN_USER = username (default:user1)
