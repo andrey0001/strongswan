@@ -33,7 +33,7 @@ steps:
 
 - name: build_and_push_centos
   commands:
-    - docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag andrey0001/strongswan:centos .
+    - docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag andrey0001/strongswan:centos .
   when:
     branch:
     - centos
