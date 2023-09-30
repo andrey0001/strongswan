@@ -33,7 +33,7 @@ steps:
 
 - name: build_and_push_alpine_as_latest
   commands:
-  - docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag andrey0001/strongswan .
+    - docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag andrey0001/strongswan:latest --tag andrey0001/strongswan:alpine .
   when:
     branch:
     - alpine
